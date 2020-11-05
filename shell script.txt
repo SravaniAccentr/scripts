@@ -1,0 +1,8 @@
+filename="abc.txt"
+echo "Filename is $filename"
+MTIME=$(find "$filename" -mmin +10)
+if [ -z "$MTIME" ]
+then	echo "$filename not modified in last 10 minutes.  Please check"
+	mail -s "$filename not modified" abc.xxx@com
+else	echo "$filename is modified"
+fi
